@@ -12,8 +12,10 @@ using Microsoft.AspNetCore.Http;
 
 namespace DogGo.Controllers
 {
-   
+    [Route("api/[controller]")]
+    [ApiController]
     
+
     public class WalkersController : Controller
     {
         // GET: api/<WalkersController>
@@ -29,10 +31,19 @@ namespace DogGo.Controllers
 
         // GET api/<WalkersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: Walkers/Details/5
+        public ActionResult Details(int id)
         {
-            return "value";
+            Walker walker = _walkerRepo.GetWalkerById(id);
+
+            if (walker == null)
+            {
+                return NotFound();
+            }
+
+            return View(walker);
         }
+
 
         // POST api/<WalkersController>
         [HttpPost]

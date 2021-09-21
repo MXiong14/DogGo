@@ -424,3 +424,4 @@ C:\Users\mattx\workspace\DogGo\DogGo\DogGo\obj\Debug\net5.0\ref\DogGo.dll
 C:\Users\mattx\workspace\DogGo\DogGo\DogGo\obj\Debug\net5.0\DogGo.pdb
 C:\Users\mattx\workspace\DogGo\DogGo\DogGo\obj\Debug\net5.0\DogGo.genruntimeconfig.cache
 C:\Users\mattx\workspace\DogGo\DogGo\DogGo\obj\Debug\net5.0\Razor\Views\Walkers\Index.cshtml.g.cs
+C:\Users\mattx\workspace\DogGo\DogGo\DogGo\obj\Debug\net5.0\Razor\Views\Walkers\Details.cshtml.g.cs
