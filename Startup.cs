@@ -26,6 +26,7 @@ namespace DogGo
         {
             services.AddControllersWithViews();
             services.AddTransient<IWalkerRepository, WalkerRepository>();
+            services.AddTransient<IOwnerRepository, OwnerRepository>();
 
         }
 
@@ -46,6 +47,7 @@ namespace DogGo
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseStatusCodePages();
 
             app.UseAuthorization();
 
@@ -55,6 +57,7 @@ namespace DogGo
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

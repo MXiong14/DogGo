@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DogGo.Models;
+using DogGo.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,38 +11,52 @@ using System.Threading.Tasks;
 
 namespace DogGo.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class OwnersController : ControllerBase
+ 
+    public class OwnersController : Controller
     {
-        // GET: api/<OwnersController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IOwnerRepository _ownerRepo;
+
+        // ASP.NET will give us an instance of our Walker Repository. This is called "Dependency Injection"
+        public OwnersController(IOwnerRepository ownerRepository)
         {
-            return new string[] { "value1", "value2" };
+            _ownerRepo = ownerRepository;
+        }
+
+        public ActionResult Index()
+        {
+            List<Owner> owners = _ownerRepo.GetAllOwners();
+
+            return View(owners);
         }
 
         // GET api/<OwnersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+
+        public ActionResult Details(int id)
         {
-            return "value";
+            Owner owner = _ownerRepo.GetOwnerById(id);
+
+            if (owner == null)
+            {
+                return NotFound();
+            }
+
+            return View(owner);
         }
 
         // POST api/<OwnersController>
-        [HttpPost]
+
         public void Post([FromBody] string value)
         {
         }
 
         // PUT api/<OwnersController>/5
-        [HttpPut("{id}")]
+        
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/<OwnersController>/5
-        [HttpDelete("{id}")]
+       
         public void Delete(int id)
         {
         }

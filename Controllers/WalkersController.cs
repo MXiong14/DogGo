@@ -12,14 +12,19 @@ using Microsoft.AspNetCore.Http;
 
 namespace DogGo.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    
+  
 
     public class WalkersController : Controller
     {
-        // GET: api/<WalkersController>
-        [HttpGet]
+        private readonly IWalkerRepository _walkerRepo;
+
+        // ASP.NET will give us an instance of our Walker Repository. This is called "Dependency Injection"
+        public WalkersController(IWalkerRepository walkerRepository)
+        {
+            _walkerRepo = walkerRepository;
+        }
+
+      
         // GET: Walkers
         public ActionResult Index()
         {
@@ -29,8 +34,7 @@ namespace DogGo.Controllers
         }
 
 
-        // GET api/<WalkersController>/5
-        [HttpGet("{id}")]
+       
         // GET: Walkers/Details/5
         public ActionResult Details(int id)
         {
@@ -46,28 +50,21 @@ namespace DogGo.Controllers
 
 
         // POST api/<WalkersController>
-        [HttpPost]
+       
         public void Post([FromBody] string value)
         {
         }
 
         // PUT api/<WalkersController>/5
-        [HttpPut("{id}")]
+       
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE api/<WalkersController>/5
-        [HttpDelete("{id}")]
+       
         public void Delete(int id)
         {
         }
-    private readonly IWalkerRepository _walkerRepo;
-
-    // ASP.NET will give us an instance of our Walker Repository. This is called "Dependency Injection"
-    public WalkersController(IWalkerRepository walkerRepository)
-    {
-        _walkerRepo = walkerRepository;
-    }
     }
 }
