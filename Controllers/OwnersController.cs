@@ -43,22 +43,68 @@ namespace DogGo.Controllers
             return View(owner);
         }
 
-        // POST api/<OwnersController>
-
-        public void Post([FromBody] string value)
+        // GET: OwnersController/Create
+        // Creates a blank HTML form to be filled out with input from user with Create View:
+        public ActionResult Create()
         {
+            return View();
         }
 
-        // PUT api/<OwnersController>/5
-        
-        public void Put(int id, [FromBody] string value)
+        // POST: OwnersController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
         {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // DELETE api/<OwnersController>/5
-       
-        public void Delete(int id)
+        // GET: OwnersController/Edit/5
+        public ActionResult Edit(int id)
         {
+            return View();
+        }
+
+        // POST: OwnersController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: OwnersController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: OwnersController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

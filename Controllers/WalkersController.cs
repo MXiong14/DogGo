@@ -47,24 +47,67 @@ namespace DogGo.Controllers
 
             return View(walker);
         }
-
-
-        // POST api/<WalkersController>
-       
-        public void Post([FromBody] string value)
+        // GET: WalkersController/Create
+        public ActionResult Create()
         {
+            return View();
         }
 
-        // PUT api/<WalkersController>/5
-       
-        public void Put(int id, [FromBody] string value)
+        // POST: WalkersController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IFormCollection collection)
         {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // DELETE api/<WalkersController>/5
-       
-        public void Delete(int id)
+        // GET: WalkersController/Edit/5
+        public ActionResult Edit(int id)
         {
+            return View();
+        }
+
+        // POST: WalkersController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: WalkersController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            return View();
+        }
+
+        // POST: WalkersController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
